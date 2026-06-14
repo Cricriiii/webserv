@@ -1,0 +1,154 @@
+/* autoindex_site3.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0f172a;
+  --surface: rgba(15, 23, 42, 0.78);
+  --surface-border: rgba(255, 255, 255, 0.08);
+  --text: #e5eefc;
+  --muted: #a9b6cc;
+  --link: #7dd3fc;
+  --link-hover: #38bdf8;
+  --row-hover: rgba(125, 211, 252, 0.08);
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  --danger: #fda4af;
+  --danger-bg: rgba(244, 63, 94, 0.12);
+  --danger-bg-hover: rgba(244, 63, 94, 0.20);
+  --danger-border: rgba(244, 63, 94, 0.30);
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(125, 211, 252, 0.18), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.14), transparent 24%),
+    linear-gradient(180deg, #0b1120 0%, #111827 100%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 28px 28px 10px 28px;
+  color: var(--text);
+}
+
+.path {
+  color: var(--muted);
+  font-size: 0.98rem;
+  padding: 0 28px 20px 28px;
+}
+
+#upload-file,
+#upload-btn {
+  margin-left: 28px;
+}
+
+#upload-file {
+  margin-bottom: 14px;
+  color: var(--text);
+}
+
+#upload-btn {
+  margin-bottom: 22px;
+  padding: 10px 16px;
+  border: 1px solid rgba(125, 211, 252, 0.18);
+  border-radius: 10px;
+  background: rgba(125, 211, 252, 0.10);
+  color: var(--link);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+}
+
+#upload-btn:hover {
+  background: rgba(125, 211, 252, 0.18);
+  border-color: rgba(125, 211, 252, 0.28);
+}
+
+#upload-btn:active {
+  transform: scale(0.98);
+}
+
+.listing {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.listing li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.18s ease;
+}
+
+.listing li:hover {
+  background: var(--row-hover);
+}
+
+.listing li a {
+  color: var(--link);
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.listing li a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.directory a {
+  font-weight: 700;
+}
+
+.file a {
+  flex: 1;
+  min-width: 0;
+}
+
+.delete-btn {
+  flex-shrink: 0;
+  padding: 7px 12px;
+  border: 1px solid var(--danger-border);
+  border-radius: 8px;
+  background: var(--danger-bg);
+  color: var(--danger);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: var(--danger-bg-hover);
+  border-color: rgba(244, 63, 94, 0.4);
+}
+
+.delete-btn:active {
+  transform: scale(0.98);
+}

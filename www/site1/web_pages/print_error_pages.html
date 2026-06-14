@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Request Tester</title>
+    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="stylesheet" href="/styles/print_error_page.css">
+</head>
+<body>
+    <div class="card request_tester_card">
+        <h2 class="title">HTTP Request Tester</h2>
+
+		<a href="/" class="button button-secondary back_home_button">← Back to Home</a>
+
+        <p class="text">
+            This page lets you manually send raw HTTP requests to the server through a Bash CGI script.
+            You can test invalid requests, trigger error responses, or try valid commands to check how the server behaves.
+        </p>
+
+        <div class="request_tester_layout">
+            <div class="request_panel">
+                <h3 class="title_block">Raw Request</h3>
+
+                <form class="request_form" method="POST" action="http://localhost:8080/bash/request.sh" enctype="text/plain">
+                    <label class="request_label" for="request_box">Write your HTTP request here</label>
+
+                    <textarea
+                        id="request_box"
+                        class="request_textarea"
+                        name="request"
+                        spellcheck="false"
+                    >GET / HTTP/1.1
+Host: localhost
+
+</textarea>
+
+                    <button class="button" type="submit">Send Request</button>
+                </form>
+            </div>
+
+            <div class="helper_panel">
+                <h3 class="title_block">Examples</h3>
+
+                <div class="example_box">
+                    <p class="example_title">Valid GET</p>
+                    <pre>GET / HTTP/1.1
+Host: localhost</pre>
+                </div>
+
+                <div class="example_box">
+                    <p class="example_title">Unknown method</p>
+                    <pre>FOO / HTTP/1.1
+Host: localhost</pre>
+                </div>
+
+                <div class="example_box">
+                    <p class="example_title">Missing host</p>
+                    <pre>GET / HTTP/1.1</pre>
+                </div>
+
+                <div class="example_box">
+                    <p class="example_title">Non-existing page</p>
+                    <pre>GET /does_not_exist HTTP/1.1
+Host: localhost</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

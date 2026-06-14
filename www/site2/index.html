@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Site 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #f7f4ee;
+            --surface: #ffffff;
+            --text: #2f2a24;
+            --muted: #6f675d;
+            --primary: #c97b3b;
+            --primary-hover: #b56728;
+            --border: rgba(47, 42, 36, 0.08);
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background:
+                radial-gradient(circle at top left, #fffaf2 0%, transparent 35%),
+                linear-gradient(180deg, #f8f5ef 0%, #f1ece4 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text);
+        }
+
+        .card {
+            width: 100%;
+            max-width: 760px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            padding: 40px;
+        }
+
+        .badge {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(201, 123, 59, 0.12);
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 14px;
+            letter-spacing: -0.03em;
+        }
+
+        p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .highlight {
+            margin-top: 24px;
+            margin-bottom: 28px;
+            padding: 18px 20px;
+            border-left: 4px solid var(--primary);
+            background: #fcf8f3;
+            border-radius: 14px;
+            color: var(--text);
+        }
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .button {
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .button-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .button-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .button-secondary {
+            background: transparent;
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .button-secondary:hover {
+            background: #f6f1ea;
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 28px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .nav {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <span class="badge">Webserv Demo · Site 2</span>
+        <h1>Welcome to Site 2</h1>
+        <p>
+            This second site shows that your server can host multiple websites
+            with different visual identities while keeping a clean and simple design.
+        </p>
+        <p>
+            You can use it to demonstrate changes in <strong>server_name</strong>,
+            content, or configuration between different virtual hosts.
+        </p>
+
+        <div class="highlight">
+            From this page, you can move to the other sites to demonstrate
+            host switching and content changes in your project.
+        </div>
+
+        <div class="nav">
+            <a class="button button-primary" href="http://site1.localhost:8080/">Go to Site 1</a>
+            <a class="button button-secondary" href="http://site2.localhost:8080/">Stay on Site 2</a>
+            <a class="button button-secondary" href="http://site3.localhost:8081/">Go to Site 3</a>
+            <a class="button button-secondary" href="http://site2.localhost:8080/downloads/">Go to Downloads</a>
+        </div>
+    </main>
+</body>
+</html>

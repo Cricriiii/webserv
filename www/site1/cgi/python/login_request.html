@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/styles/auth.css">
+</head>
+
+<body class="auth-page request-page">
+    <div class="auth-shell">
+        <div class="auth-card">
+            <h1 class="auth-title">Enter your login</h1>
+            <p class="auth-text">Use your login to test the authentication flow of our website.</p>
+
+            <form class="login-form" method="POST" action="/perl/login_validator.pl">
+                <input class="input" type="text" name="login" placeholder="Your login" required>
+                <button class="button button-primary" type="submit">Submit</button>
+            </form>
+
+            <div class="actions">
+                <a href="/" class="button button-secondary">Back to the home page</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
