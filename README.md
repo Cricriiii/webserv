@@ -22,7 +22,7 @@
 
 ---
 
-## Architecture
+## Architecture - Reactor pattern
 
 The server is built around an event-driven, non-blocking architecture.
 
