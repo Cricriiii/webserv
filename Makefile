@@ -111,6 +111,9 @@ fclean fc:	clean
 
 re:		fclean all
 
+format:
+	find . -name "*.cpp" -o -name "*.hpp" | xargs clang-format -i
+
 test: all
 	@valgrind					\
 	--leak-check=full			\
@@ -118,4 +121,4 @@ test: all
 	--trace-children=yes		\
 	$(NAME)
 
-.PHONY: all clean c fclean fc re test
+.PHONY: all clean c fclean fc re format test

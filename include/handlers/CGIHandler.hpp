@@ -1,30 +1,25 @@
 #ifndef CGIHandler_HPP
-# define CGIHandler_HPP
+#define CGIHandler_HPP
 
-# include "handlers/IHandler.hpp"
+#include "handlers/IHandler.hpp"
 
-static const char*	headers_blacklist[] =
-{
-		"authorization",
-		"content-type",
-		"content-length",
-		"connection",
-		"keep-alive",
-		"proxy-connection",
-		"transfer-encoding",
-		"upgrade",
-		"te",
-		"trailer"
-};
+static const char* headers_blacklist[] = {"authorization",
+                                          "content-type",
+                                          "content-length",
+                                          "connection",
+                                          "keep-alive",
+                                          "proxy-connection",
+                                          "transfer-encoding",
+                                          "upgrade",
+                                          "te",
+                                          "trailer"};
 
-class CGIHandler: public IHandler
-{
+class CGIHandler : public IHandler {
 public:
-	CGIHandler();
-	~CGIHandler();
+    CGIHandler();
+    ~CGIHandler();
 
-	resource_context_t	execute(request_context_t& context);
-
+    resource_context_t execute(request_context_t& context);
 };
 
 #endif

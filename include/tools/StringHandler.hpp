@@ -1,85 +1,84 @@
 #ifndef STRINGHANDLER_HPP
-# define STRINGHANDLER_HPP
+#define STRINGHANDLER_HPP
 
-# include <string>
-# include <cstdio>
-# include <sstream>
-# include <limits>
-# include <cstdlib>
+#include <cstdio>
+#include <cstdlib>
+#include <limits>
+#include <sstream>
+#include <string>
 
-struct sh_count
-{
-	char	c;
-	size_t	count;
+struct sh_count {
+    char c;
+    size_t count;
 
-	sh_count(): c(0), count(0) {}
+    sh_count() : c(0), count(0) {
+    }
 };
 
-class StringHandler
-{
-	public:
-		StringHandler(std::string& target);
-		StringHandler(const std::string& target);
-		~StringHandler();
+class StringHandler {
+public:
+    StringHandler(std::string& target);
+    StringHandler(const std::string& target);
+    ~StringHandler();
 
-		size_t				length() const;
-		void				clear();
-		const char*			c_str() const;
-		size_t				count(char c) const;
-		size_t				count(char c, size_t n) const;
-		struct sh_count*	count(const char set[], size_t size) const;
+    size_t length() const;
+    void clear();
+    const char* c_str() const;
+    size_t count(char c) const;
+    size_t count(char c, size_t n) const;
+    struct sh_count* count(const char set[], size_t size) const;
 
+    StringHandler& operator<<(const std::string& s);
+    StringHandler& operator<<(const char* s);
+    StringHandler& operator<<(char s);
 
+    template <typename T>
+    StringHandler& operator<<(T n) {
+        std::ostringstream oss;
+        oss << n;
+        _ref_string.append(oss.str());
+        return *this;
+    }
 
-		StringHandler&	operator<<(const std::string& s);
-		StringHandler&	operator<<(const char* s);
-		StringHandler&	operator<<(char s);
+    StringHandler& operator+=(const std::string& s);
+    StringHandler& operator+=(const char* s);
+    StringHandler& operator+=(char s);
 
-		template<typename T>
-		StringHandler&	operator<<(T n)
-		{
-			std::ostringstream	oss;
-			oss << n;
-			_ref_string.append(oss.str());
-			return *this;
-		}
+    template <typename T>
+    StringHandler& operator+=(T n) {
+        StringHandler::operator<<(n);
+        return *this;
+    }
 
-		StringHandler&	operator+=(const std::string& s);
-		StringHandler&	operator+=(const char* s);
-		StringHandler&	operator+=(char s);
+    template <typename T>
+    T to_number(size_t pos, bool check_end) {
+        if (pos > _ref_string.size()) {
+            throw std::logic_error(
+                "StringHandler: to_number: pos after string end");
+        }
 
-		template<typename T>
-		StringHandler&	operator+=(T n)
-		{
-			StringHandler::operator<<(n);
-			return *this;
-		}
+        const char* strval = _ref_string.c_str() + pos;
 
-		template<typename T>
-		T	to_number(size_t pos, bool check_end)
-		{
-			if (pos > _ref_string.size()) {
-				throw std::logic_error("StringHandler: to_number: pos after string end");
-			}
+        if (std::numeric_limits<long double>::max() <
+            std::numeric_limits<T>::max()) {
+            throw std::logic_error(
+                "StringHandler: to_number: Can't convert to smaller type "
+                "without loss");
+        }
 
-			const char*	strval = _ref_string.c_str() + pos;
+        char* end;
+        long double res = std::strtold(strval, &end);
 
-			if (std::numeric_limits<long double>::max() < std::numeric_limits<T>::max()) {
-				throw std::logic_error("StringHandler: to_number: Can't convert to smaller type without loss");
-			}
+        if (check_end && *end != '\0') {
+            throw std::logic_error(
+                "StringHandler: to_number: Invalid bytes after value");
+        }
 
-			char		*end;
-			long double	res = std::strtold(strval, &end);
+        return static_cast<T>(res);
+    }
 
-			if (check_end && *end != '\0') {
-				throw std::logic_error("StringHandler: to_number: Invalid bytes after value");
-			}
-
-			return static_cast<T>(res);
-		}
-		
-	private:
-		std::string&	_ref_string;
+private:
+    std::string& _ref_string;
 };
 
 #endif

@@ -1,16 +1,14 @@
 #ifndef AUTOINDEXHANDLER_HPP
-# define AUTOINDEXHANDLER_HPP
+#define AUTOINDEXHANDLER_HPP
 
-# include "handlers/IHandler.hpp"
+#include "handlers/IHandler.hpp"
 
-class AutoIndexHandler: public IHandler
-{
+class AutoIndexHandler : public IHandler {
 public:
-	AutoIndexHandler();
-	~AutoIndexHandler();
+    AutoIndexHandler();
+    ~AutoIndexHandler();
 
-	resource_context_t	execute(request_context_t& context);
-
+    resource_context_t execute(request_context_t& context);
 };
 
 #endif

@@ -1,14 +1,15 @@
 #ifndef DataTypes_HPP
-# define DataTypes_HPP
+#define DataTypes_HPP
 
-# include <cstddef>
+#include <cstddef>
 
 struct buffer {
-	size_t	capacity;
-	ssize_t	size;
-	char*	data;
+    size_t capacity;
+    ssize_t size;
+    char* data;
 
-	buffer(): capacity(0), size(0), data(NULL) {}
+    buffer() : capacity(0), size(0), data(NULL) {
+    }
 };
 
 #endif
